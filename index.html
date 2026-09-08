@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LSPD Handbook</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #060913;
+      color: #ffffff;
+      direction: rtl;
+    }
+
+    /* Header */
+    .hero-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 50px 20px 30px 20px;
+      background: radial-gradient(circle at center top, #1e293b 0%, #080d1a 60%, #060913 100%);
+      width: 100%;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-circle {
+      width: 85px;
+      height: 85px;
+      border: 1.5px solid #d97706;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(217, 119, 6, 0.05);
+    }
+
+    .logo-icon {
+      font-size: 38px;
+    }
+
+    .main-title {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: 2px;
+      color: #ffffff;
+      margin-bottom: 15px;
+    }
+
+    .sub-title {
+      color: #94a3b8;
+      font-size: 14px;
+      letter-spacing: 3px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #0b1120;
+      border-top: 1px solid #1e293b;
+      border-bottom: 1px solid #1e293b;
+      padding: 12px 0;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .handbook-title {
+      color: #d97706;
+      font-weight: bold;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .lang-switch {
+      display: flex;
+      background-color: #1e293b;
+      border-radius: 6px;
+      padding: 2px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 4px 12px;
+      font-size: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      background-color: #d97706;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    /* Welcome Box */
+    .main-container {
+      max-width: 900px;
+      margin: 40px auto 20px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .welcome-section h2 {
+      font-size: 24px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .welcome-sub {
+      color: #64748b;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .alert-box {
+      background-color: rgba(217, 119, 6, 0.05);
+      border: 1px solid #d97706;
+      border-radius: 8px;
+      padding: 15px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #f59e0b;
+      font-size: 13px;
+    }
+
+    .alert-box p {
+      margin: 0;
+      color: #e2e8f0;
+    }
+
+    .alert-box strong {
+      color: #f59e0b;
+    }
+
+    /* Common Section Styles */
+    .section-title {
+      text-align: center;
+      color: #f59e0b;
+      font-size: 26px;
+      margin-bottom: 25px;
+    }
+
+    /* Important Notes Section */
+    .notes-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .note-card {
+      background-color: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .note-card-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .note-card-title.green { color: #10b981; }
+    .note-card-title.blue { color: #3b82f6; }
+    .note-card-title.purple { color: #a855f7; }
+    .note-card-title.red { color: #ef4444; }
+
+    .note-desc {
+      color: #cbd5e1;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .note-code {
+      color: #f59e0b;
+      font-family: monospace;
+      background: #0f172a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    /* Divisions Section */
+    .divisions-section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .divisions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .division-card {
+      background-color: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 25px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .div-abbr {
+      color: #f59e0b;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .div-full {
+      color: #f59e0b;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .div-desc {
+      color: #94a3b8;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Commands Section */
+    .commands-section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .commands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .command-card {
+      background-color: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 10px 15px;
+    }
+
+    .cmd-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 5px;
+      border-bottom: 1px solid #131c2e;
+    }
+
+    .cmd-row:last-child {
+      border-bottom: none;
+    }
+
+    .cmd-code {
+      color: #ffffff;
+      font-family: monospace;
+      font-size: 13px;
+      direction: ltr;
+    }
+
+    .cmd-desc {
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
+    /* Radio Codes Section */
+    .codes-section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .table-card {
+      background-color: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .codes-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+    }
+
+    [dir="ltr"] .codes-table {
+      text-align: left;
+    }
+
+    .codes-table th {
+      background-color: #0f172a;
+      color: #94a3b8;
+      font-size: 13px;
+      padding: 14px 20px;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .codes-table td {
+      padding: 12px 20px;
+      border-bottom: 1px solid #131c2e;
+      color: #e2e8f0;
+      font-size: 13px;
+    }
+
+    .code-val {
+      color: #ffffff;
+      font-weight: 600;
+      direction: ltr;
+      width: 120px;
+    }
+
+    /* Rules Section */
+    .rules-section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .rule-card {
+      background-color: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .rule-card-title {
+      color: #f59e0b;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .rule-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      background: #0f172a;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #1e293b;
+    }
+
+    .rule-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .rule-num {
+      background: #1e293b;
+      color: #f59e0b;
+      font-weight: bold;
+      font-size: 12px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .rule-text {
+      color: #cbd5e1;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* Force Matrix Section */
+    .force-section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .force-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 25px;
+    }
+
+    @media (max-width: 500px) {
+      .force-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .force-card {
+      background-color: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .force-card-title {
+      color: #f59e0b;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .level-box {
+      border-right: 3px solid #f59e0b;
+      padding: 12px 15px;
+      background-color: #0f172a;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    [dir="ltr"] .level-box {
+      border-right: none;
+      border-left: 3px solid #f59e0b;
+    }
+
+    .level-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .level-box.lvl-4 {
+      border-color: #ef4444;
+    }
+
+    .level-title {
+      color: #f59e0b;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .level-box.lvl-4 .level-title {
+      color: #ef4444;
+    }
+
+    .level-desc {
+      color: #cbd5e1;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* Contraband Section */
+    .contraband-section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .contraband-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .contraband-card {
+      background-color: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .contraband-card-title {
+      color: #f59e0b;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .contraband-desc {
+      color: #cbd5e1;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Pistol & Cuffs Rules Section */
+    .pistol-cuffs-section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .pistol-cuffs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 25px;
+    }
+
+    @media (max-width: 500px) {
+      .pistol-cuffs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Tazer Rules Section */
+    .tazer-section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .tazer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 25px;
+    }
+
+    @media (max-width: 500px) {
+      .tazer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tazer-card {
+      background-color: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .tazer-header {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tazer-header.forbidden {
+      color: #ef4444;
+    }
+
+    .tazer-header.allowed {
+      color: #10b981;
+    }
+
+    .tazer-box {
+      background-color: #0f172a;
+      border-radius: 8px;
+      padding: 15px;
+      border: 1px solid #1e293b;
+      margin-top: 15px;
+    }
+
+    .tazer-box-title {
+      color: #f59e0b;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      border-bottom: 1px dashed #1e293b;
+      padding-bottom: 5px;
+    }
+
+    /* Charges Section */
+    .charges-section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .charges-subtitle {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      margin-top: -15px;
+      margin-bottom: 30px;
+    }
+
+    .charges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    .charge-card {
+      background-color: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 22px;
+    }
+
+    .charge-card-title {
+      color: #f59e0b;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .charge-item {
+      margin-bottom: 16px;
+    }
+
+    .charge-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .charge-header {
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 3px;
+    }
+
+    .charge-name {
+      color: #ffffff;
+    }
+
+    .charge-desc {
+      color: #94a3b8;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="hero-header">
+    <div class="logo-container">
+      <div class="logo-circle"><span class="logo-icon">⚖️</span></div>
+    </div>
+    
+    <div class="hero-content">
+      <h1 class="main-title">LOS SANTOS<br>POLICE DEPARTMENT</h1>
+      <p class="sub-title">TO PROTECT AND TO SERVE</p>
+      <p class="description" 
+         data-ar="الدليل الرسمي لجهاز Los Santos Police Department. مرجع موحد ومباشر لكل ضابط في المدينة. أكواد الراديو، الأوامر، الرتب، القضايا، قواعد استخدام القوة والأسلحة والإجراءات الأساسية."
+         data-en="Official Los Santos Police Department Handbook. A unified reference for every officer. Radio codes, commands, ranks, charges, force matrix, weapon rules, and basic protocols.">
+        الدليل الرسمي لجهاز Los Santos Police Department. مرجع موحد ومباشر لكل ضابط في المدينة. أكواد الراديو، الأوامر، الرتب، القضايا، قواعد استخدام القوة والأسلحة والإجراءات الأساسية.
+      </p>
+    </div>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-right">
+        <span class="handbook-title">LSPD HANDBOOK ★</span>
+      </div>
+      
+      <div class="nav-links">
+        <a href="#notes" data-ar="ملاحظات هامة" data-en="Important Notes">ملاحظات هامة</a>
+        <a href="#divisions" data-ar="الأقسام" data-en="Divisions">الأقسام</a>
+        <a href="#commands" data-ar="الأوامر" data-en="Commands">الأوامر</a>
+        <a href="#codes" data-ar="Radio Codes" data-en="Radio Codes">Radio Codes</a>
+        <a href="#rules" data-ar="القوانين" data-en="Rules">القوانين</a>
+        <a href="#force-matrix" data-ar="Force Matrix" data-en="Force Matrix">Force Matrix</a>
+        <a href="#contraband" data-ar="المحظورات" data-en="Contraband">المحظورات</a>
+        <a href="#pistol-cuffs" data-ar="السلاح والقيود" data-en="Pistol & Cuffs">السلاح والقيود</a>
+        <a href="#tazer-rules" data-ar="Tazer Rules" data-en="Tazer Rules">Tazer Rules</a>
+        <a href="#charges" data-ar="القضايا" data-en="Charges">القضايا</a>
+      </div>
+
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLanguage('ar')">العربية</button>
+        <button class="lang-btn" onclick="setLanguage('en')">English</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Welcome Container -->
+  <main class="main-container">
+    <section class="welcome-section">
+      <h2 data-ar="مرحباً بك في LSPD" data-en="Welcome to LSPD">مرحباً بك في LSPD</h2>
+      <p class="welcome-sub" 
+         data-ar="هدفنا حماية المواطنين، تطبيق القانون، احترام الـ Roleplay، اتباع التسلسل العسكري، والعمل بروح الفريق."
+         data-en="Our goal is to protect citizens, enforce the law, respect Roleplay, follow the chain of command, and work as a team.">
+        هدفنا حماية المواطنين، تطبيق القانون، احترام الـ Roleplay، اتباع التسلسل العسكري، والعمل بروح الفريق.
+      </p>
+      
+      <div class="alert-box">
+        <p>
+          <strong data-ar="المبدأ الأساسي:" data-en="Core Principle:">المبدأ الأساسي:</strong> 
+          <span data-ar="كن محترفاً، استخدم أقل مستوى قوة مناسب، احترم أوامر القيادة، وسلامة المواطنين والوحدات هي الأولوية."
+                data-en="Be professional, use appropriate force level, respect command structure, and prioritize citizen & officer safety.">
+            كن محترفاً، استخدم أقل مستوى قوة مناسب، احترم أوامر القيادة، وسلامة المواطنين والوحدات هي الأولوية.
+          </span>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Important Notes Section (New) -->
+  <section class="notes-section" id="notes">
+    <h2 class="section-title" data-ar="📌 Important Notes" data-en="📌 Important Notes">📌 Important Notes</h2>
+
+    <div class="notes-grid">
+      <!-- On Duty -->
+      <div class="note-card">
+        <div class="note-card-title green">
+          <span>🟢 بداية الخدمة</span>
+        </div>
+        <p class="note-desc" data-ar="قَبْلَ بداية الخدمة سجّل دخولك في الراديو باستعمال <span class='note-code'>/setfreq 1</span> ثم <span class='note-code'>/pr</span>، مثال: تسجيل دخول — الاسم — [Rank]." data-en="Before starting duty, log into radio using <span class='note-code'>/setfreq 1</span> then <span class='note-code'>/pr</span>, e.g.: Login — Name — [Rank].">
+          قَبْلَ بداية الخدمة سجّل دخولك في الراديو باستعمال <span class="note-code">/setfreq 1</span> ثم <span class="note-code">/pr</span>، مثال: تسجيل دخول — الاسم — [Rank].
+        </p>
+      </div>
+
+      <!-- Body Camera -->
+      <div class="note-card">
+        <div class="note-card-title blue">
+          <span>🎥 Body Camera</span>
+        </div>
+        <p class="note-desc" data-ar="يجب ارتداء الكاميرا أثناء الخدمة عبر الأمر:<br><br><span class='note-code'>/pickupcam</span>" data-en="Must wear camera while on duty using command:<br><br><span class='note-code'>/pickupcam</span>">
+          يجب ارتداء الكاميرا أثناء الخدمة عبر الأمر:<br><br><span class="note-code">/pickupcam</span>
+        </p>
+      </div>
+
+      <!-- Chat Usage -->
+      <div class="note-card">
+        <div class="note-card-title purple">
+          <span>📻 f/ و r/ و pr/</span>
+        </div>
+        <p class="note-desc" data-ar="<span class='note-code'>/f</span> للـ OOC وخارج نطاق الـ Roleplay فقط.<br>التواصل الشرطي يكون أساسًا عبر <span class='note-code'>/r</span> وباستخدام Radio Codes. استعمل <span class='note-code'>/pr</span> للمعلومات والكودات اللازمة للعمل." data-en="<span class='note-code'>/f</span> for OOC & outside Roleplay scope only.<br>Police communication is mainly via <span class='note-code'>/r</span> using Radio Codes. Use <span class='note-code'>/pr</span> for necessary work info & codes.">
+          <span class="note-code">/f</span> للـ OOC وخارج نطاق الـ Roleplay فقط.<br>التواصل الشرطي يكون أساسًا عبر <span class="note-code">/r</span> وباستخدام Radio Codes. استعمل <span class="note-code">/pr</span> للمعلومات والكودات اللازمة للعمل.
+        </p>
+      </div>
+
+      <!-- Off Duty -->
+      <div class="note-card">
+        <div class="note-card-title red">
+          <span>🔴 نهاية الخدمة</span>
+        </div>
+        <p class="note-desc" data-ar="عند Off Duty: انزع معدات وأسلحة الشرطة، خذ Permissions عند الحاجة، وسجّل خروجك وفق النظام المعتمد." data-en="When Off Duty: Remove police gear & weapons, get Permissions when needed, and log out according to official system.">
+          عند Off Duty: انزع معدات وأسلحة الشرطة، خذ Permissions عند الحاجة، وسجّل خروجك وفق النظام المعتمد.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divisions Section -->
+  <section class="divisions-section" id="divisions">
+    <h2 class="section-title" data-ar="Divisions 🛡️" data-en="Divisions 🛡️">Divisions 🛡️</h2>
+
+    <div class="divisions-grid">
+      <div class="division-card">
+        <div class="div-abbr">IA</div>
+        <div class="div-full">Internal Affairs</div>
+        <p class="div-desc" data-ar="تنظيم الفصيل، متابعة الانضباط والمخالفات والحفاظ على نزاهة الجهاز." data-en="Faction organization, monitoring discipline & violations, maintaining department integrity.">تنظيم الفصيل، متابعة الانضباط والمخالفات والحفاظ على نزاهة الجهاز.</p>
+      </div>
+      <div class="division-card">
+        <div class="div-abbr">S.W.A.T</div>
+        <div class="div-full">Special Weapons & Tactics</div>
+        <p class="div-desc" data-ar="وحدة التدخل للحالات عالية الخطورة، Turfs، العمليات والمطلوبين الخطرين." data-en="High-risk intervention unit, Turfs, operations and dangerous wanted suspects.">وحدة التدخل للحالات عالية الخطورة، Turfs، العمليات والمطلوبين الخطرين.</p>
+      </div>
+      <div class="division-card">
+        <div class="div-abbr">TR</div>
+        <div class="div-full">Training & Recruitment</div>
+        <p class="div-desc" data-ar="تدريب المجندين، الاختبارات، التقييم والتوظيف لإعداد ضباط مؤهلين للخدمة." data-en="Recruit training, testing, evaluation & recruitment to prepare qualified officers.">تدريب المجندين، الاختبارات، التقييم والتوظيف لإعداد ضباط مؤهلين للخدمة.</p>
+      </div>
+      <div class="division-card">
+        <div class="div-abbr">PT</div>
+        <div class="div-full">Patrol Division</div>
+        <p class="div-desc" data-ar="الدوريات اليومية، التعامل مع Wanted، الاستجابة للبلاغات وحجز المركبات المخالفة." data-en="Daily patrols, handling Wanted suspects, responding to calls and impounding vehicles.">الدوريات اليومية، التعامل مع Wanted، الاستجابة للبلاغات وحجز المركبات المخالفة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commands Section -->
+  <section class="commands-section" id="commands">
+    <h2 class="section-title" data-ar="Global Commands ⌨️" data-en="Global Commands ⌨️">Global Commands ⌨️</h2>
+
+    <div class="commands-grid">
+      <div class="command-card">
+        <div class="cmd-row"><span class="cmd-code">/faction rank (ID)</span><span class="cmd-desc" data-ar="منح رتبة" data-en="Grant Rank">منح رتبة</span></div>
+        <div class="cmd-row"><span class="cmd-code">/froster</span><span class="cmd-desc" data-ar="معرفة حالة أعضاء القسم" data-en="View Roster Status">معرفة حالة أعضاء القسم</span></div>
+        <div class="cmd-row"><span class="cmd-code">/frespawncars</span><span class="cmd-desc" data-ar="إعادة سيارات الفصيل" data-en="Respawn Faction Vehicles">إعادة سيارات الفصيل</span></div>
+        <div class="cmd-row"><span class="cmd-code">/gov (text)</span><span class="cmd-desc" data-ar="إعلان لجميع اللاعبين" data-en="Public Announcement">إعلان لجميع اللاعبين</span></div>
+        <div class="cmd-row"><span class="cmd-code">/mdc</span><span class="cmd-desc" data-ar="فتح الكمبيوتر والبحث" data-en="Open MDC System">فتح الكمبيوتر والبحث</span></div>
+        <div class="cmd-row"><span class="cmd-code">/su</span><span class="cmd-desc" data-ar="توجيه قضية" data-en="Issue Charge">توجيه قضية</span></div>
+        <div class="cmd-row"><span class="cmd-code">/cuff /uncuff</span><span class="cmd-desc" data-ar="تقييد أو فك القيود" data-en="Cuff / Uncuff Player">تقييد أو فك القيود</span></div>
+        <div class="cmd-row"><span class="cmd-code">/drag</span><span class="cmd-desc" data-ar="سحب أو إيقاف سحب الشخص" data-en="Drag / Undrag Person">سحب أو إيقاف سحب الشخص</span></div>
+        <div class="cmd-row"><span class="cmd-code">/detain</span><span class="cmd-desc" data-ar="وضعه في السيارة" data-en="Detain in Vehicle">وضعه في السيارة</span></div>
+        <div class="cmd-row"><span class="cmd-code">/tazer</span><span class="cmd-desc" data-ar="إخراج الصاعق" data-en="Equip Taser">إخراج الصاعق</span></div>
+      </div>
+
+      <div class="command-card">
+        <div class="cmd-row"><span class="cmd-code">/siren</span><span class="cmd-desc" data-ar="تشغيل الإنذارات الصوتية" data-en="Toggle Sirens">تشغيل الإنذارات الصوتية</span></div>
+        <div class="cmd-row"><span class="cmd-code">/deploy</span><span class="cmd-desc" data-ar="وضع حاجز" data-en="Deploy Barrier">وضع حاجز</span></div>
+        <div class="cmd-row"><span class="cmd-code">/undeploy</span><span class="cmd-desc" data-ar="إزالة حاجز" data-en="Remove Barrier">إزالة حاجز</span></div>
+        <div class="cmd-row"><span class="cmd-code">/undeployall</span><span class="cmd-desc" data-ar="إزالة كل الحواجز" data-en="Remove All Barriers">إزالة كل الحواجز</span></div>
+        <div class="cmd-row"><span class="cmd-code">/division list</span><span class="cmd-desc" data-ar="عرض الأقسام" data-en="List Divisions">عرض الأقسام</span></div>
+        <div class="cmd-row"><span class="cmd-code">/division assign (ID)</span><span class="cmd-desc" data-ar="إضافة عضو لقسم" data-en="Assign to Division">إضافة عضو لقسم</span></div>
+        <div class="cmd-row"><span class="cmd-code">/division kick (ID)</span><span class="cmd-desc" data-ar="طرد عضو من قسم" data-en="Remove from Division">طرد عضو من قسم</span></div>
+        <div class="cmd-row"><span class="cmd-code">/faction invite (ID)</span><span class="cmd-desc" data-ar="دعوة للفصيل" data-en="Invite to Faction">دعوة للفصيل</span></div>
+        <div class="cmd-row"><span class="cmd-code">/faction kick (ID)</span><span class="cmd-desc" data-ar="طرد من الفصيل" data-en="Kick from Faction">طرد من الفصيل</span></div>
+        <div class="cmd-row"><span class="cmd-code">/faction offlinekick (text)</span><span class="cmd-desc" data-ar="طرد عضو غير متصل" data-en="Offline Kick Member">طرد عضو غير متصل</span></div>
+      </div>
+
+      <div class="command-card">
+        <div class="cmd-row"><span class="cmd-code">/f (text)</span><span class="cmd-desc" data-ar="التحدث خارج نطاق الشخصية OOC" data-en="Faction OOC Chat">التحدث خارج نطاق الشخصية OOC</span></div>
+        <div class="cmd-row"><span class="cmd-code">/r (text)</span><span class="cmd-desc" data-ar="التحدث في الراديو اللاسلكي IC" data-en="Radio Chat IC">التحدث في الراديو اللاسلكي IC</span></div>
+        <div class="cmd-row"><span class="cmd-code">/d (text)</span><span class="cmd-desc" data-ar="التحدث في راديو جميع الأقسام" data-en="Department Radio">التحدث في راديو جميع الأقسام</span></div>
+        <div class="cmd-row"><span class="cmd-code">/div (text)</span><span class="cmd-desc" data-ar="التحدث مع نفس القسم" data-en="Division Chat">التحدث مع نفس القسم</span></div>
+        <div class="cmd-row"><span class="cmd-code">/m (text)</span><span class="cmd-desc" data-ar="مضخم الصوت" data-en="Megaphone">مضخم الصوت</span></div>
+        <div class="cmd-row"><span class="cmd-code">/showbadge (ID)</span><span class="cmd-desc" data-ar="إظهار الشارة لشخص" data-en="Show Badge">إظهار الشارة لشخص</span></div>
+        <div class="cmd-row"><span class="cmd-code">/locker</span><span class="cmd-desc" data-ar="فتح خزنة الأسلحة والملابس" data-en="Open Locker">فتح خزنة الأسلحة والملابس</span></div>
+        <div class="cmd-row"><span class="cmd-code">/callsign</span><span class="cmd-desc" data-ar="وضع رقم الشارة على السيارة" data-en="Set Vehicle Callsign">وضع رقم الشارة على السيارة</span></div>
+        <div class="cmd-row"><span class="cmd-code">/backup</span><span class="cmd-desc" data-ar="نشر موقعك وإعادة الأمر للإلغاء" data-en="Request / Cancel Backup">نشر موقعك وإعادة الأمر للإلغاء</span></div>
+        <div class="cmd-row"><span class="cmd-code">/badge</span><span class="cmd-desc" data-ar="ارتداء أو إخفاء الشارة" data-en="Toggle Badge">ارتداء أو إخفاء الشارة</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Radio 10-Codes Section -->
+  <section class="codes-section" id="codes">
+    <h2 class="section-title" data-ar="Radio 10-Codes 📻" data-en="Radio 10-Codes 📻">Radio 10-Codes 📻</h2>
+
+    <div class="table-card">
+      <table class="codes-table">
+        <thead>
+          <tr>
+            <th data-ar="Code" data-en="Code">Code</th>
+            <th data-ar="المعنى" data-en="Meaning">المعنى</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="code-val">10-1</td><td data-ar="أحتاج دعم في موقعي" data-en="Need backup at my location">أحتاج دعم في موقعي</td></tr>
+          <tr><td class="code-val">10-2</td><td data-ar="إلغاء طلب الدعم" data-en="Cancel backup request">إلغاء طلب الدعم</td></tr>
+          <tr><td class="code-val">10-3</td><td data-ar="تم القبض على مشتبه به، عائد به للمقر" data-en="Suspect in custody, returning to HQ">تم القبض على مشتبه به، عائد به للمقر</td></tr>
+          <tr><td class="code-val">10-4</td><td data-ar="تلقيت رسالة، أنا في طريقي" data-en="Message received, on my way">تلقيت رسالة، أنا في طريقي</td></tr>
+          <tr><td class="code-val">10-5</td><td data-ar="أكثر المطلوبين: قُبض عليه أو قُتل" data-en="Most wanted: Captured or killed">أكثر المطلوبين: قُبض عليه أو قُتل</td></tr>
+          <tr><td class="code-val">10-6</td><td data-ar="ذاهب للخزنة لأخذ الأسلحة" data-en="Heading to locker for weapons">ذاهب للخزنة لأخذ الأسلحة</td></tr>
+          <tr><td class="code-val">10-7</td><td data-ar="الخروج من الخدمة مؤقتاً" data-en="Out of service temporarily">الخروج من الخدمة مؤقتاً</td></tr>
+          <tr><td class="code-val">10-8</td><td data-ar="الرجوع إلى الخدمة" data-en="Back in service">الرجوع إلى الخدمة</td></tr>
+          <tr><td class="code-val">10-9</td><td data-ar="أحتاج سيارة لنقل المتهم مع الموقع" data-en="Need transport vehicle for suspect + location">أحتاج سيارة لنقل المتهم مع الموقع</td></tr>
+          <tr><td class="code-val">10-10</td><td data-ar="الخروج من المدينة" data-en="Leaving the city">الخروج من المدينة</td></tr>
+          <tr><td class="code-val">10-11</td><td data-ar="طلب شريك دورية" data-en="Requesting patrol partner">طلب شريك دورية</td></tr>
+          <tr><td class="code-val">10-12</td><td data-ar="الوصول لمكان الحادث" data-en="Arrived at scene">الوصول لمكان الحادث</td></tr>
+          <tr><td class="code-val">10-13</td><td data-ar="أحتاج دعم في المطاردة" data-en="Need pursuit backup">أحتاج دعم في المطاردة</td></tr>
+          <tr><td class="code-val">10-14</td><td data-ar="مجموعة من الناس يطلقون النار" data-en="Group of people shooting">مجموعة من الناس يطلقون النار</td></tr>
+          <tr><td class="code-val">10-15</td><td data-ar="سرقة بنك مع رهائن" data-en="Bank robbery with hostages">سرقة بنك مع رهائن</td></tr>
+          <tr><td class="code-val">10-16</td><td data-ar="سرقة بنك بدون رهينة" data-en="Bank robbery without hostages">سرقة بنك بدون رهينة</td></tr>
+          <tr><td class="code-val">10-17</td><td data-ar="إطلاق نار داخل البنك" data-en="Shots fired inside the bank">إطلاق نار داخل البنك</td></tr>
+          <tr><td class="code-val">10-18</td><td data-ar="مطلوب سيارة إسعاف" data-en="EMS vehicle needed">مطلوب سيارة إسعاف</td></tr>
+          <tr><td class="code-val">10-19</td><td data-ar="الوضع تحت السيطرة" data-en="Situation under control">الوضع تحت السيطرة</td></tr>
+          <tr><td class="code-val">10-20</td><td data-ar="اجتماع طارئ في المقر" data-en="Emergency meeting at HQ">اجتماع طارئ في المقر</td></tr>
+          <tr><td class="code-val">20-20</td><td data-ar="إنهاء / إلغاء الاجتماع الطارئ" data-en="End / Cancel emergency meeting">إنهاء / إلغاء الاجتماع الطارئ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Rules Section -->
+  <section class="rules-section" id="rules">
+    <h2 class="section-title" data-ar="📜 القوانين الأساسية" data-en="📜 Basic Rules">📜 القوانين الأساسية</h2>
+
+    <div class="rules-grid">
+      <!-- Public Rules -->
+      <div class="rule-card">
+        <div class="rule-card-title">Public Rules</div>
+        <div class="rule-item">
+          <div class="rule-num">1</div>
+          <div class="rule-text" data-ar="يمنع دخول الحي دون أمر مباشر من High LSPD." data-en="Entering turf without direct orders from High LSPD is prohibited.">يمنع دخول الحي دون أمر مباشر من High LSPD.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">2</div>
+          <div class="rule-text" data-ar="مداهمة أي حي تتطلب 15 شرطيًا على الأقل." data-en="Raiding any turf requires at least 15 officers.">مداهمة أي حي تتطلب 15 شرطيًا على الأقل.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">3</div>
+          <div class="rule-text" data-ar="يمنع استخدام الـ Tazer داخل الحي." data-en="Using a Tazer inside the turf is prohibited.">يمنع استخدام الـ Tazer داخل الحي.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">4</div>
+          <div class="rule-text" data-ar="الشرطي الفاسد قد يعاقب بـ Ban و Delete Character." data-en="Corrupt officer may be punished with Ban and Delete Character.">الشرطي الفاسد قد يعاقب بـ Ban و Delete Character.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">5</div>
+          <div class="rule-text" data-ar="يجب احترام وتنفيذ أوامر الرتب الأعلى." data-en="Higher rank orders must be respected and executed.">يجب احترام وتنفيذ أوامر الرتب الأعلى.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">6</div>
+          <div class="rule-text" data-ar="عند Off Duty انزع أسلحة الشرطة وخذ Permissions من القائد." data-en="When Off Duty, remove police weapons and get Permissions from command.">عند Off Duty انزع أسلحة الشرطة وخذ Permissions من القائد.</div>
+        </div>
+      </div>
+
+      <!-- Charge Rules -->
+      <div class="rule-card">
+        <div class="rule-card-title">Charge Rules</div>
+        <div class="rule-item">
+          <div class="rule-num">1</div>
+          <div class="rule-text" data-ar="لا تترك المقبوض عليه وحده لأكثر من 10 دقائق." data-en="Do not leave a detainee alone for more than 10 minutes.">لا تترك المقبوض عليه وحده لأكثر من 10 دقائق.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">2</div>
+          <div class="rule-text" data-ar="يسمح بتفتيش من قام بـ Robbery أو Fight ومصادرة الأشياء الخطيرة فقط." data-en="Frisking is allowed only for those who did Robbery or Fight, confiscating dangerous items only.">يسمح بتفتيش من قام بـ Robbery أو Fight ومصادرة الأشياء الخطيرة فقط.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">3</div>
+          <div class="rule-text" data-ar="وثّق القضايا والتقارير." data-en="Document charges and reports.">وثّق القضايا والتقارير.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">4</div>
+          <div class="rule-text" data-ar="للمواطن حق المحامي ومكالمة هاتفية واحدة." data-en="The citizen has the right to a lawyer and one phone call.">للمواطن حق المحامي ومكالمة هاتفية واحدة.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">5</div>
+          <div class="rule-text" data-ar="القضايا الكبرى يمكن تحويلها إلى المحكمة." data-en="Major cases can be transferred to court.">القضايا الكبرى يمكن تحويلها إلى المحكمة.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">6</div>
+          <div class="rule-text" data-ar="6 قضايا كحد أقصى: يمكن تحويل المواطن للمحكمة." data-en="Max 6 charges: The citizen can be transferred to court.">6 قضايا كحد أقصى: يمكن تحويل المواطن للمحكمة.</div>
+        </div>
+      </div>
+
+      <!-- Citizen Masqué & Fines -->
+      <div class="rule-card">
+        <div class="rule-card-title">Citizen Masqué & Fines</div>
+        <div class="rule-item">
+          <div class="rule-num">1</div>
+          <div class="rule-text" data-ar="المرة الأولى للمقنع: تنبيه + قضية + غرامة." data-en="First time masked: Warning + Charge + Fine.">المرة الأولى للمقنع: تنبيه + قضية + غرامة.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">2</div>
+          <div class="rule-text" data-ar="المرة الثانية: إيقافه واحتجازه وتفتيشه." data-en="Second time: Stop, detain, and search.">المرة الثانية: إيقافه واحتجازه وتفتيشه.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">3</div>
+          <div class="rule-text" data-ar="يمنع اختراع أو تلفيق قضية من تلقاء نفسك." data-en="Fabricating or inventing charges on your own is prohibited.">يمنع اختراع أو تلفيق قضية من تلقاء نفسك.</div>
+        </div>
+      </div>
+
+      <!-- Fight & Raids -->
+      <div class="rule-card">
+        <div class="rule-card-title">Fight & Raids</div>
+        <div class="rule-item">
+          <div class="rule-num">1</div>
+          <div class="rule-text" data-ar="مداهمة أو الهجوم على Gang: 15 شرطيًا كحد أدنى." data-en="Raid or attack on Gang: 15 officers minimum.">مداهمة أو الهجوم على Gang: 15 شرطيًا كحد أدنى.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">2</div>
+          <div class="rule-text" data-ar="مداهمة منظمة كبرى مثل Terro / Hitman: 20 شرطيًا كحد أدنى." data-en="Major organization raid (Terro / Hitman): 20 officers minimum.">مداهمة منظمة كبرى مثل Terro / Hitman: 20 شرطيًا كحد أدنى.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">3</div>
+          <div class="rule-text" data-ar="في الطوارئ يسمح بالتفتيش حسب حالة الاستنكار." data-en="In emergencies, searches are allowed based on state of alert.">في الطوارئ يسمح بالتفتيش حسب حالة الاستنكار.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">4</div>
+          <div class="rule-text" data-ar="أي استخدام للقوة يبقى خاضعاً لـ Force Matrix والأوامر." data-en="Any use of force remains subject to Force Matrix and orders.">أي استخدام للقوة يبقى خاضعاً لـ Force Matrix والأوامر.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Force Matrix Section -->
+  <section class="force-section" id="force-matrix">
+    <h2 class="section-title" data-ar="🛡️ Force Matrix" data-en="🛡️ Force Matrix">🛡️ Force Matrix</h2>
+
+    <div class="force-grid">
+      <!-- Standard Force Matrix -->
+      <div class="force-card">
+        <div class="force-card-title">Force Matrix</div>
+
+        <div class="level-box">
+          <div class="level-title">Level 1</div>
+          <div class="level-desc" data-ar="إهانات أو عدوانية لفظية: تحذيرات شفهية وتهدئة فقط." data-en="Insults or verbal aggression: Verbal warnings and de-escalation only.">إهانات أو عدوانية لفظية: تحذيرات شفهية وتهدئة فقط.</div>
+        </div>
+
+        <div class="level-box">
+          <div class="level-title">Level 2</div>
+          <div class="level-desc" data-ar="إعتداء جسدي أو تهديد غير ناري: Tazer أو Pepper Spray أو Baton حسب الحالة. لا سلاح ناري." data-en="Physical assault or non-firearm threat: Tazer, Pepper Spray, or Baton depending on situation. No firearms.">إعتداء جسدي أو تهديد غير ناري: Tazer أو Pepper Spray أو Baton حسب الحالة. لا سلاح ناري.</div>
+        </div>
+
+        <div class="level-box">
+          <div class="level-title">Level 3</div>
+          <div class="level-desc" data-ar="تهديد حقيقي للحياة أو سلاح ناري: اطلب الدعم، اسحب السلاح وصوّب، لكن لا تطلق النار قبل Level 4." data-en="Real threat to life or firearm: Call backup, draw weapon & aim, but DO NOT fire before Level 4.">تهديد حقيقي للحياة أو سلاح ناري: اطلب الدعم، اسحب السلاح وصوّب، لكن لا تطلق النار قبل Level 4.</div>
+        </div>
+
+        <div class="level-box lvl-4">
+          <div class="level-title">Level 4</div>
+          <div class="level-desc" data-ar="إطلاق نار أو جريمة خطيرة أو تهديد قاتل مباشر أو Wanted 5 نجوم: القوة القاتلة عند الضرورة مع طلب دعم إضافي." data-en="Active shooting, serious crime, direct lethal threat or Wanted 5 stars: Lethal force when necessary with additional backup request.">إطلاق نار أو جريمة خطيرة أو تهديد قاتل مباشر أو Wanted 5 نجوم: القوة القاتلة عند الضرورة مع طلب دعم إضافي.</div>
+        </div>
+      </div>
+
+      <!-- Vehicle Force Matrix -->
+      <div class="force-card">
+        <div class="force-card-title">Vehicle Force Matrix 🚙</div>
+
+        <div class="level-box">
+          <div class="level-title">Level 1</div>
+          <div class="level-desc" data-ar="قيادة متهورة: اطلب التوقف وإطفاء المحرك." data-en="Reckless driving: Request to pull over and turn off engine.">قيادة متهورة: اطلب التوقف وإطفاء المحرك.</div>
+        </div>
+
+        <div class="level-box">
+          <div class="level-title">Level 2</div>
+          <div class="level-desc" data-ar="رفض التوقف أو الهروب: اطلب الدعم وواصل المطاردة." data-en="Refusal to stop or fleeing: Request backup and continue pursuit.">رفض التوقف أو الهروب: اطلب الدعم وواصل المطاردة.</div>
+        </div>
+
+        <div class="level-box">
+          <div class="level-title">Level 3</div>
+          <div class="level-desc" data-ar="خطر كبير أو رهائن أو اصطدامات: جهّز الحواجز ولا تطلق النار على السيارة." data-en="High risk, hostages, or collisions: Deploy barriers and do NOT shoot at the vehicle.">خطر كبير أو رهائن أو اصطدامات: جهّز الحواجز ولا تطلق النار على السيارة.</div>
+        </div>
+
+        <div class="level-box lvl-4">
+          <div class="level-title">Level 4</div>
+          <div class="level-desc" data-ar="إطلاق نار من المركبة أو تهديد جسيم: يمكن إطلاق النار على السيارة، مع أولوية سلامة الناس ومحاولة القبض عليه حيًّا." data-en="Shooting from vehicle or severe threat: Shooting at the vehicle allowed, prioritizing public safety and trying to capture suspect alive.">إطلاق نار من المركبة أو تهديد جسيم: يمكن إطلاق النار على السيارة، مع أولوية سلامة الناس ومحاولة القبض عليه حيًّا.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contraband Section -->
+  <section class="contraband-section" id="contraband">
+    <h2 class="section-title" data-ar="📦 الأسلحة والمواد المحظورة" data-en="📦 Contraband & Weapons Rules">📦 الأسلحة والمواد المحظورة</h2>
+
+    <div class="contraband-grid">
+      <div class="contraband-card">
+        <div class="contraband-card-title" data-ar="🔫 رخصة الأسلحة" data-en="🔫 Gun License">🔫 رخصة الأسلحة</div>
+        <p class="contraband-desc" data-ar="تخول لحاملها حيازة واستخدام الأسلحة الترخيصة له قانونيًا فقط." data-en="Authorizes the holder to legally possess and use permitted weapons only.">تخول لحاملها حيازة واستخدام الأسلحة الترخيصة له قانونيًا فقط.</p>
+      </div>
+
+      <div class="contraband-card">
+        <div class="contraband-card-title" data-ar="📦 Materials" data-en="📦 Materials">📦 Materials</div>
+        <p class="contraband-desc" data-ar="الحد الأقصى: 10,000. ما يتجاوز ذلك يستوجب المحاسبة." data-en="Maximum limit: 10,000. Exceeding this limit subjects the person to legal action.">الحد الأقصى: 10,000. ما يتجاوز ذلك يستوجب المحاسبة.</p>
+      </div>
+
+      <div class="contraband-card">
+        <div class="contraband-card-title" data-ar="🌿 المخدرات" data-en="🌿 Narcotics">🌿 المخدرات</div>
+        <p class="contraband-desc" data-ar="أقل من 40 جرام: استهلاك شخصي.<br>أكثر من 45 جرام: جناية ترويج مخدرات." data-en="Under 40g: Personal consumption.<br>Over 45g: Drug trafficking felony.">أقل من 40 جرام: استهلاك شخصي.<br>أكثر من 45 جرام: جناية ترويج مخدرات.</p>
+      </div>
+
+      <div class="contraband-card">
+        <div class="contraband-card-title" data-ar="💣 الأسلحة الثقيلة" data-en="💣 Heavy Weapons">💣 الأسلحة الثقيلة</div>
+        <p class="contraband-desc" data-ar="حيازة الأسلحة الكبيرة أو المحظورة تصنف كجريمة خطيرة حسب الحالة." data-en="Possessing heavy or illegal weapons is classified as a severe crime based on context.">حيازة الأسلحة الكبيرة أو المحظورة تصنف كجريمة خطيرة حسب الحالة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pistol & Cuffs Rules Section -->
+  <section class="pistol-cuffs-section" id="pistol-cuffs">
+    <h2 class="section-title" data-ar="🔫 Pistol & Cuffs Rules" data-en="🔫 Pistol & Cuffs Rules">🔫 Pistol & Cuffs Rules</h2>
+
+    <div class="pistol-cuffs-grid">
+      <!-- Pistol Rules -->
+      <div class="rule-card">
+        <div class="rule-card-title">Pistol Rules 🔫</div>
+        <div class="rule-item">
+          <div class="rule-num">1</div>
+          <div class="rule-text" data-ar="يمنع إطلاق النار في Green Zone." data-en="Shooting in Green Zone is strictly prohibited.">يمنع إطلاق النار في Green Zone.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">2</div>
+          <div class="rule-text" data-ar="إذا غيّر المشتبه سيارته أثناء المطاردة، يسمح بإطلاق النار على السيارة فقط وليس الشخص مباشرة." data-en="If suspect switches cars during pursuit, shooting at the car only is allowed, not directly at the person.">إذا غيّر المشتبه سيارته أثناء المطاردة، يسمح بإطلاق النار على السيارة فقط وليس الشخص مباشرة.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">3</div>
+          <div class="rule-text" data-ar="إذا هرب مجرم بعد Robbery دون طلب تفاوض، يتم التعامل حسب القواعد المعتمدة." data-en="If a criminal flees after Robbery without negotiation request, handle according to approved rules.">إذا هرب مجرم بعد Robbery دون طلب تفاوض، يتم التعامل حسب القواعد المعتمدة.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">4</div>
+          <div class="rule-text" data-ar="يمكن إلغاء تفاوض السرقة بعد 3 طلبات مرفوضة وغير منطقية." data-en="Robbery negotiation can be canceled after 3 rejected & unreasonable requests.">يمكن إلغاء تفاوض السرقة بعد 3 طلبات مرفوضة وغير منطقية.</div>
+        </div>
+      </div>
+
+      <!-- Cuffs Rules -->
+      <div class="rule-card">
+        <div class="rule-card-title">Cuffs Rules 🔗</div>
+        <div class="rule-item">
+          <div class="rule-num">1</div>
+          <div class="rule-text" data-ar="يمنع Cuff في منتصف Fight." data-en="Cuffing mid-Fight is prohibited.">يمنع Cuff في منتصف Fight.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">2</div>
+          <div class="rule-text" data-ar="لا تقيّد لاعباً قبل أن يرفع يديه." data-en="Do not cuff a player before they raise their hands.">لا تقيّد لاعباً قبل أن يرفع يديه.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">3</div>
+          <div class="rule-text" data-ar="بعد 3 Warn يمكن صعقه ثم تقييده حسب الحالة." data-en="After 3 Warns, they may be tased then cuffed depending on scenario.">بعد 3 Warn يمكن صعقه ثم تقييده حسب الحالة.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tazer Rules Section -->
+  <section class="tazer-section" id="tazer-rules">
+    <h2 class="section-title" data-ar="⚡ Tazer Rules" data-en="⚡ Tazer Rules">⚡ Tazer Rules</h2>
+
+    <div class="tazer-grid">
+      <!-- Allowed & General -->
+      <div class="tazer-card">
+        <div class="tazer-header allowed">
+          <span>🚫 القاعده الأساسية</span>
+        </div>
+        <p class="level-desc" data-ar="الصاعق وسيلة للسيطرة وليس للفوز في القتال. يمنع استخدام أثناء Fight أو Fight Roleplay أو تبادل الضربات المباشر." data-en="Tazer is a control tool, not for winning a fight. Prohibited during Fight, Fight Roleplay, or direct melee trading.">الصاعق وسيلة للسيطرة وليس للفوز في القتال. يمنع استخدام أثناء Fight أو Fight Roleplay أو تبادل الضربات المباشر.</p>
+
+        <div class="tazer-box">
+          <div class="tazer-box-title" style="color:#10b981;" data-ar="✅ يسمح باستخدامه" data-en="✅ Allowed Usage">✅ يسمح باستخدامه</div>
+          <p class="level-desc" data-ar="عند هروب المشتبه به على قدميه، أو مقاومة الاعتقال دون قتال مباشر، وبعد أوامر واضحة ورفض الامتثال مع تناسب الاستخدام مع الحالة." data-en="When suspect flees on foot, or resists arrest without direct combat, and after clear orders and refusal to comply proportional to situation.">عند هروب المشتبه به على قدميه، أو مقاومة الاعتقال دون قتال مباشر، وبعد أوامر واضحة ورفض الامتثال مع تناسب الاستخدام مع الحالة.</p>
+        </div>
+      </div>
+
+      <!-- Forbidden & Post Fight -->
+      <div class="tazer-card">
+        <div class="tazer-header forbidden">
+          <span>❌ يمنع استخدام ه</span>
+        </div>
+        <p class="level-desc" data-ar="داخل أحياء العصابات، أثناء القيادة، على شخص بدرجة متحركة، على شخص داخل سيارة، أثناء Fight مسلح، ضد مقيد أو مستسلم، بشكل Spam، أو إذا كان سقوطه يسبب خطراً كبيراً دون ضرورة." data-en="Inside gang turfs, while driving, on a moving bike rider, inside a car, during armed Fight, against cuffed/surrendered, Spamming, or if fall causes severe harm unnecessarily.">داخل أحياء العصابات، أثناء القيادة، على شخص بدرجة متحركة، على شخص داخل سيارة، أثناء Fight مسلح، ضد مقيد أو مستسلم، بشكل Spam، أو إذا كان سقوطه يسبب خطراً كبيراً دون ضرورة.</p>
+
+        <div class="tazer-box">
+          <div class="tazer-box-title" style="color:#ef4444;" data-ar="🛑 بعد انتهاء الـ Fight" data-en="🛑 After Fight Ends">🛑 بعد انتهاء الـ Fight</div>
+          <p class="level-desc" data-ar="إذا انتهى القتال وبدأ الشخص بالهرب، أعد تقييم الوضع. لا تستخدم الـ Taser تلقائيًا دون سبب واضح." data-en="If fight ended and person started fleeing, re-evaluate situation. Do not use Taser automatically without clear cause.">إذا انتهى القتال وبدأ الشخص بالهرب، أعد تقييم الوضع. لا تستخدم الـ Taser تلقائيًا دون سبب واضح.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Charges Section -->
+  <section class="charges-section" id="charges">
+    <h2 class="section-title" data-ar="قائمة الاتهامات والمخالفات ⚖️" data-en="Charges & Violations List ⚖️">قائمة الاتهامات والمخالفات ⚖️</h2>
+    <p class="charges-subtitle" data-ar="اختر القضية المناسبة للحالة الفعلية فقط، ويمنع تلفيق أو اختراع الاتهامات." data-en="Select appropriate charges for the actual case only. Fabrication of charges is strictly prohibited.">اختر القضية المناسبة للحالة الفعلية فقط، ويمنع تلفيق أو اختراع الاتهامات.</p>
+
+    <div class="charges-grid">
+
+      <!-- Traffic & Driving -->
+      <div class="charge-card">
+        <div class="charge-card-title">Traffic & Driving 🚦</div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Driving Without a License:</span></div>
+          <div class="charge-desc" data-ar="قيادة مركبة أو دراجة نارية بدون رخصة سارية." data-en="Driving a vehicle or motorcycle without a valid license.">قيادة مركبة أو دراجة نارية بدون رخصة سارية.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Speeding:</span></div>
+          <div class="charge-desc" data-ar="تجاوز السرعة القانونية المحددة." data-en="Exceeding the legal speed limit.">تجاوز السرعة القانونية المحددة.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Reckless Driving:</span></div>
+          <div class="charge-desc" data-ar="القيادة بتهور بما يهدد الناس أو الممتلكات." data-en="Reckless driving endangering people or property.">القيادة بتهور بما يهدد الناس أو الممتلكات.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Unlawful Street Racing:</span></div>
+          <div class="charge-desc" data-ar="تنظيم أو المشاركة في سباقات غير قانونية." data-en="Organizing or participating in illegal street racing.">تنظيم أو المشاركة في سباقات غير قانونية.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Illegal Shortcut:</span></div>
+          <div class="charge-desc" data-ar="استعمال ممرات أو اختصارات ممنوعة لتفادي الطريق الرئيسي." data-en="Using illegal shortcuts to bypass main roads.">استعمال ممرات أو اختصارات ممنوعة لتفادي الطريق الرئيسي.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Failure to Pay a Ticket:</span></div>
+          <div class="charge-desc" data-ar="التهرب من دفع الغرامات والمخالفات." data-en="Evading payment of fines and traffic tickets.">التهرب من دفع الغرامات والمخالفات.</div>
+        </div>
+      </div>
+
+      <!-- Violent Crimes -->
+      <div class="charge-card">
+        <div class="charge-card-title">Violent Crimes 🩸</div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Assault:</span></div>
+          <div class="charge-desc" data-ar="تهديد شخص أو محاولة ضربه وإخافته." data-en="Threatening or attempting to strike and intimidate someone.">تهديد شخص أو محاولة ضربه وإخافته.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Verbal Assault:</span></div>
+          <div class="charge-desc" data-ar="شتائم أو تهديدات كلامية عدائية." data-en="Hostile verbal insults or threats.">شتائم أو تهديدات كلامية عدائية.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Vehicular Assault:</span></div>
+          <div class="charge-desc" data-ar="تعمد صدم شخص أو إيذائه بالمركبة." data-en="Intentionally striking or injuring a person with a vehicle.">تعمد صدم شخص أو إيذائه بالمركبة.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Attempted Murder:</span></div>
+          <div class="charge-desc" data-ar="محاولة قتل شخص مع فشل الجريمة." data-en="Attempting to murder someone without success.">محاولة قتل شخص مع فشل الجريمة.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Murder:</span></div>
+          <div class="charge-desc" data-ar="القتل العمد." data-en="Intentional murder.">القتل العمد.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Kidnapping:</span></div>
+          <div class="charge-desc" data-ar="خطف شخص واحتجازه بالقوة." data-en="Abducting and detaining a person by force.">خطف شخص واحتجازه بالقوة.</div>
+        </div>
+      </div>
+
+      <!-- Weapons & Narcotics -->
+      <div class="charge-card">
+        <div class="charge-card-title">Weapons & Narcotics 🔫</div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Possession of Illegal Firearms:</span></div>
+          <div class="charge-desc" data-ar="حيازة سلاح غير مرخص." data-en="Possession of an unlicensed firearm.">حيازة سلاح غير مرخص.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Brandishing a Firearm:</span></div>
+          <div class="charge-desc" data-ar="إشهار السلاح في العلن بطريقة تهديدية." data-en="Brandishing a weapon in public in a threatening manner.">إشهار السلاح في العلن بطريقة تهديدية.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Discharge of a Firearm:</span></div>
+          <div class="charge-desc" data-ar="إطلاق النار داخل المدينة دون مبرر قانوني." data-en="Discharging a firearm inside the city without legal cause.">إطلاق النار داخل المدينة دون مبرر قانوني.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Distribution / Manufacture of Firearms:</span></div>
+          <div class="charge-desc" data-ar="بيع أو تهريب أو تصنيع أسلحة غير مرخصة." data-en="Selling, smuggling, or manufacturing unlicensed weapons.">بيع أو تهريب أو تصنيع أسلحة غير مرخصة.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Illegal Narcotics:</span></div>
+          <div class="charge-desc" data-ar="حيازة أو بيع أو توزيع أو تصنيع المخدرات." data-en="Possessing, selling, distributing, or manufacturing illegal drugs.">حيازة أو بيع أو توزيع أو تصنيع المخدرات.</div>
+        </div>
+      </div>
+
+      <!-- Law & Justice -->
+      <div class="charge-card">
+        <div class="charge-card-title">Law & Justice ⚖️</div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Evading Arrest:</span></div>
+          <div class="charge-desc" data-ar="الهروب من الشرطة أثناء محاولة الإيقاف." data-en="Fleeing from police during an attempted stop.">الهروب من الشرطة أثناء محاولة الإيقاف.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Failure to Comply:</span></div>
+          <div class="charge-desc" data-ar="رفض الانصياع لأوامر قانونية مباشرة." data-en="Refusing to obey direct legal commands.">رفض الانصياع لأوامر قانونية مباشرة.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Impersonating a LEO:</span></div>
+          <div class="charge-desc" data-ar="انتحال صفة رجل أمن." data-en="Impersonating a law enforcement officer.">انتحال صفة رجل أمن.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Bribery:</span></div>
+          <div class="charge-desc" data-ar="تقديم أو طلب رشوة مقابل مصلحة غير قانونية." data-en="Offering or soliciting a bribe for illegal favor.">تقديم أو طلب رشوة مقابل مصلحة غير قانونية.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Obstruction of Justice:</span></div>
+          <div class="charge-desc" data-ar="تعطيل العدالة أو إتلاف الأدلة." data-en="Obstructing justice or destroying evidence.">تعطيل العدالة أو إتلاف الأدلة.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Lie on Law:</span></div>
+          <div class="charge-desc" data-ar="تقديم معلومات كاذبة أو مضللة." data-en="Providing false or misleading information.">تقديم معلومات كاذبة أو مضللة.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Forget His Identity:</span></div>
+          <div class="charge-desc" data-ar="رفض إظهار الهوية أو إخفاء الاسم عند الاستجواب القانوني." data-en="Refusing to present ID or hiding identity during interrogation.">رفض إظهار الهوية أو إخفاء الاسم عند الاستجواب القانوني.</div>
+        </div>
+      </div>
+
+      <!-- Property & Morals -->
+      <div class="charge-card">
+        <div class="charge-card-title">Property & Morals 💰</div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Grand Theft Auto:</span></div>
+          <div class="charge-desc" data-ar="سرقة سيارة أو مركبة مملوكة للغير." data-en="Stealing a vehicle owned by someone else.">سرقة سيارة أو مركبة مملوكة للغير.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Robbery:</span></div>
+          <div class="charge-desc" data-ar="السطو أو السرقة بالقوة والتهديد." data-en="Robbery or theft by force and threat.">السطو أو السرقة بالقوة والتهديد.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Destruction of Public Property:</span></div>
+          <div class="charge-desc" data-ar="إتلاف الممتلكات العامة." data-en="Vandalism or damage to public property.">إتلاف الممتلكات العامة.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Transporting Illegal Goods:</span></div>
+          <div class="charge-desc" data-ar="نقل أو تهريب مواد ممنوعة." data-en="Transporting or smuggling illegal items.">نقل أو تهريب مواد ممنوعة.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Trespassing:</span></div>
+          <div class="charge-desc" data-ar="دخول مكان خاص أو حكومي محظور دون إذن." data-en="Entering private or restricted government property without permission.">دخول مكان خاص أو حكومي محظور دون إذن.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Harassment:</span></div>
+          <div class="charge-desc" data-ar="مضايقة أو ملاحقة شخص بشكل متكرر." data-en="Repeatedly harassing or stalking a person.">مضايقة أو ملاحقة شخص بشكل متكرر.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Indecent Exposure:</span></div>
+          <div class="charge-desc" data-ar="القيام بفعل علني يخدش الحياء." data-en="Public act of indecent exposure.">القيام بفعل علني يخدش الحياء.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Prostitution:</span></div>
+          <div class="charge-desc" data-ar="عرض أو ممارسة خدمات جنسية مقابل المال." data-en="Offering or engaging in sexual services for money.">عرض أو ممارسة خدمات جنسية مقابل المال.</div>
+        </div>
+      </div>
+
+      <!-- Public Order -->
+      <div class="charge-card">
+        <div class="charge-card-title">Public Order 🏙️</div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Rioting in City:</span></div>
+          <div class="charge-desc" data-ar="المشاركة في أعمال شغب أو تخريب." data-en="Participating in rioting or vandalism.">المشاركة في أعمال شغب أو تخريب.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Belonging to a Gang:</span></div>
+          <div class="charge-desc" data-ar="ثبوت الانتماء إلى عصابة إجرامية." data-en="Proven membership in a criminal gang.">ثبوت الانتماء إلى عصابة إجرامية.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Public Endangerment:</span></div>
+          <div class="charge-desc" data-ar="القيام بفعل يعرض حياة الآخرين للخطر." data-en="Acts that endanger the lives of others.">القيام بفعل يعرض حياة الآخرين للخطر.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">Misuse of 911 Hotline:</span></div>
+          <div class="charge-desc" data-ar="بلاغات كاذبة أو إزعاج خط الطوارئ." data-en="False reports or abuse of emergency hotline.">بلاغات كاذبة أو إزعاج خط الطوارئ.</div>
+        </div>
+
+        <div class="charge-item">
+          <div class="charge-header"><span class="charge-name">FCC Violation:</span></div>
+          <div class="charge-desc" data-ar="التشويش أو إساءة استخدام ترددات الشرطة." data-en="Jamming or misusing police frequencies.">التشويش أو إساءة استخدام ترددات الشرطة.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    function setLanguage(lang) {
+      const isArabic = lang === 'ar';
+      document.documentElement.lang = lang;
+      document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+
+      const buttons = document.querySelectorAll('.lang-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (isArabic) {
+        buttons[0].classList.add('active');
+      } else {
+        buttons[1].classList.add('active');
+      }
+
+      const translatableElements = document.querySelectorAll('[data-ar][data-en]');
+      translatableElements.forEach(el => {
+        el.innerHTML = isArabic ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+      });
+    }
+  </script>
+
+</body>
+</html>
