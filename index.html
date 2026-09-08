@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LSPD Handbook</title>
+  <link rel="stylesheet" href="style.css">
   
   <style>
     * {
@@ -1432,5 +1433,144 @@
     }
   </script>
 
+</body>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Ranks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #080d16;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        /* Grid Layout */
+        .ranks-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            direction: ltr;
+        }
+
+        /* Rank Cards */
+        .rank-card {
+            background-color: #0d1626;
+            border: 1px solid #1c2a40;
+            border-radius: 8px;
+            padding: 20px 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .rank-card:hover {
+            border-color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .rank-card.active {
+            border: 1px solid #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .rank-title {
+            color: #ffcc66;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .rank-id {
+            color: #8a99ad;
+            font-size: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .ranks-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .ranks-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Section -->
+    <div class="container">
+        <div class="header">
+          <div class="header" style="display: flex !important; justify-content: flex-end !important; width: 100% !important;">
+    <h2 style="text-align: right !important; direction: rtl !important;">Ranks 🏅</h2>
+</div>
+            
+        </div>
+
+        <div class="ranks-grid" id="ranksGrid"></div>
+    </div>
+
+    <script>
+        const policeRanks = [
+            { id: 6, name: "Lieutenant" },
+            { id: 7, name: "Captain" },
+            { id: 8, name: "Major" },
+            { id: 9, name: "Deputy Assistant Chief" },
+            { id: 10, name: "Assistant Chief of Police", active: true },
+            { id: 11, name: "Chief of Police" },
+            { id: 0, name: "Cadet" },
+            { id: 1, name: "Police Officer I" },
+            { id: 2, name: "Police Officer II" },
+            { id: 3, name: "Police Officer III" },
+            { id: 4, name: "Senior Officer" },
+            { id: 5, name: "Sergeant" }
+        ];
+
+        const gridContainer = document.getElementById('ranksGrid');
+
+        policeRanks.forEach(rank => {
+            const card = document.createElement('div');
+            card.className = `rank-card ${rank.active ? 'active' : ''}`;
+            card.innerHTML = `
+                <div class="rank-title">${rank.name}</div>
+                <div class="rank-id">(${rank.id})</div>
+            `;
+            gridContainer.appendChild(card);
+        });
+    </script>
 </body>
 </html>
