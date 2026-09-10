@@ -61,3 +61,25 @@ h2, .section-title, .header {
     width: 100% !important;
     gap: 10px !important;
 }
+/* القلب الداخلي للسطر: الكود على اليمين والشرح على اليسار */
+.command-row, .code-row, .table-row {
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    text-align: right !important;
+}
+
+/* ترتيب الكروت من اليمين لليسار */
+.commands-container, .grid-container {
+    direction: rtl !important;
+}
+/* Heart of the swap: flip the text and commands direction */
+.command-row, .code-row, .table-row, div[class*="command"] {
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    text-align: right !important;
+}
+
+/* Flip card blocks from right to left */
+.commands-container, .grid-container, div[class*="grid"] {
+    direction: rtl !important;
+}
